@@ -1,0 +1,68 @@
+A) Membuat Redux Store
+: Redux store dibuat dengan menggunakan function
+confgrureStore dari Redux toolkit. Function 
+ini mewajibkan untuk diberikannya argument reducer.
+configureStore secara automatis menambahkan beberapa
+middleware .W
+
+    A.1) Syntax
+    : import { configureStore } from '@reduxjs/toolkit'
+      
+      confugreStore({
+        reducer: {
+            <nama reducer>: <reducer>
+        }
+      })
+
+    A.2) Contoh
+    : import { configureStore } from '@reduxjs/toolkit'
+      import counterReducer from './counterSlice';
+
+      export default configureStore({
+        reducer: {
+            counter: counterReducer
+        }
+      })
+
+B) Redux Slices
+: Slice ialah kumpulan dari logika reducer dan actions.
+
+    B.1) Syntax
+    : import {createSlice} from '@reduxjs/toolkit'
+      
+      <nama slice> = createSlice({
+        name: <nama state>,
+        initialState: <nilai awal state>,
+        reducers: <function reducers>
+      })
+
+    B.2) Contoh
+    : import { createSlice } from '@reduxjs/toolkit'
+      export const counterSlice = createSlice({
+        name: 'counter',
+        initialState: {
+            value: 0
+        },
+        reducers: {
+            increment: state => { state.value +=1 },
+            decrement: state => { state.value += 1},
+            incrementByAmount: (state, action) => {
+                state.value += action.payload
+            }
+        }
+      })
+
+C) Menuliskan logika asynchronous dengan Thunk
+: Thunk ialah function redux yang berisikan logika 
+asinkronus. Untuk menggunakan thunk dibutuhkan middleware redux-thunk.Thunks ditulis dengan dua fungsi
+  1) Isi dari thunk function yang mendapatkann argument
+  dispatch dan getState
+  2) Luar dari creator function, yang membuat dan 
+  mengembalikan thunk function
+
+  C.1) Contoh 
+  : const incrementAsync = amount => dispathc => {
+    setTimeout(()=>{
+      dispatch(incrementByAmount(amount), 1000)
+    })
+  }

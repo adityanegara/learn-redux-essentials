@@ -1,0 +1,95 @@
+A) Apa itu Redux?
+: Redux ialah pola dan library untuk memanage 
+dan mengubah state aplikasi, menggunakan events yang
+disebut "actions". 
+  Redux menyimpan seluruh state yang dibutuhkan pada
+apikasi kalian, dengan aturan yang memastikan state hanya
+dapat diupdate dengan cara yang terprediksi.
+
+B) Mengapa Menggunakan Redux?
+: Pola dan tools yang diberikan oleh Redux membuat mudah untuk
+memahami kapan, dimana, mengapa, dan bagaimana state di aplikasi
+berubah.
+
+C) Kapan Harus Menggunakan Redux?
+: 1. Ketika aplikasi memiliki state yang banyak  dan dibutuhkan
+  dibanyak tempat.
+  2. State aplikasi sering diupdate
+  3. Logika untuk mengupdate state kompleks.
+  4. Aplikasi memiliki codebase yang besar
+
+D) Redux Libraries dan Tools
+: Redux ialah library javascript yang kecil, secara umum
+digunakan bersamaan dengan package lainnya.
+
+    D.1) React-Redux
+    : Package yang mengizinkan component React berinteraksi
+    dengan Redux store.
+
+    D.2) Redux Toolkit
+    : Berisikan package dan function yang essential untuk mem
+    bangun aplikasi Redux. Package ini sangat direkomendasikan
+    
+    D.3) Redux DevTools Extension
+    : Menunjukan riwayat perubahan state pada Redux store.
+
+E) Istilah-istilah di Redux dan konsep
+    E.1) State Management
+        E.1.1) State
+        : Sumber data yang menjalankan aplikasi
+
+        E.1.2) View
+        : Deskripsi user interface berdasarkan state
+
+        E.1.3) actions
+        : Event yang terjadi di aplikasi berdasarkan user input,
+        dan memicu berubahan state.
+
+    E.2) Immutability
+    : Tidak dapat diubah. Jika ingin mengubah suatu object atau
+    array. Kita harus mengcopy isi dari object/array tersebut
+    baru membuat perubahan.
+
+    E.3) Actions
+    : Javascript object yang harus memiliki property "type".
+    Bayangkan action ialah event yang mendeskripsikan sesuatu 
+    yang terjadi pada aplikasi.
+
+    E.4) Actions Creators
+    : Fungsi yang membuat dan mengembalikan object action
+
+    E.5) Reducers
+    : Fungsi yang menerima keadaan state sekarang dan object
+    action. Reducer akan memutuskan bagaimana cara mengupdate state
+    . Reducer mengembalikasi state baru.
+
+        E.5.1) Ciri-ciri Reducers
+        : 1) Mengkalkukasi state baru berdasarkan argument
+             state dan action.
+          2) Tidak boleh langsung memodifikasi state. 
+             Ia harus mengupdate dengan cara immutable.
+          3) Tidak boleh melakukan logika asynchronous, 
+             mengkalkukasi nilai ranodm, atau mengakibatkan
+             efek samping.
+    
+    E.6) Store
+    : Tempat penyimpanan state.
+
+    E.7) Dispatch
+    : Method untuk mengupdate state. Method ini menerima
+    satu argumen yaitu acion object. Function ini akan 
+    menjalankan function reducer.
+
+    E.8) Selectors
+    : Function yang mengetahui bagaimana cara mengambil
+    informasi yang spesifik dari store.
+
+F) Aliran data Redux
+1) Redux store dibuat menggunakan fungsi root reducer
+2) Store memanggil root reducer sekali, dan menyimpan 
+kembaliannya sebagai state
+3) Ketika UI pertama kali di render, seluruh komponen UI 
+mengakses redux store, dan menggunakan data tersebut untuk
+menentukan apa yang akan dirender.
+4) Ketika terjadi input user. Akan mendispatch action
+5) Store menjalankan function reducer
